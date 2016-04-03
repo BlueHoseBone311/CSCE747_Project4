@@ -506,4 +506,13 @@ public class InventoryTest {
         System.out.println("Test 10 Completed");
 
     }
+
+    @Test
+    public void toStringTest(){
+        System.out.println("Test 11 Started");
+        Inventory I9 = new Inventory();
+        String tS = I9.toString();
+        assertNotNull(tS);
+        System.out.println("Test 11 Completed");
+    }
 }
