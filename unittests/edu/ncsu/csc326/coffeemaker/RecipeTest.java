@@ -21,7 +21,7 @@ public class RecipeTest {
 
     @After
     public void tearDown(){
-        //Default garbage collection expected.
+        R1 = null;
     }
 
     @Test //Test Chocolate quantity spec method for a Recipe
