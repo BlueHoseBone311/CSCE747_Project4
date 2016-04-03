@@ -329,4 +329,38 @@ public class RecipeTest {
         }
     }
 
+    @Test
+    public void setNameTest(){
+        //Test for Empty String Inputs
+        R1.setName("");
+        assertNotNull(R1.getName());
+        assertEquals("",R1.getName());
+
+        //Test for null input values
+        R1.setName(null);
+        assertNotNull(R1.getName());
+        assertEquals("",R1.getName());
+
+        //Test for valid string input values
+        R1.setName("Regular@1*");
+        assertNotNull(R1.getName());
+        assertEquals("Regular@1*",R1.getName());
+    }
+
+    @Test
+    public void toStringTest(){
+        //Test for valid string input
+        R1.setName("Regular000@1*");
+        assertEquals("Regular000@1*",R1.toString());
+
+        //Test for empty strings
+        R1.setName("");
+        assertEquals("",R1.toString());
+
+        //Test for null input values
+        R1.setName(null);
+        assertEquals("",R1.getName());
+
+    }
+
 }
