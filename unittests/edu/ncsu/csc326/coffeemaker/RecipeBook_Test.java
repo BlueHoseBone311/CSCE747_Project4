@@ -87,7 +87,7 @@ public class RecipeBook_Test
 	@Test 
 	public void testGetRecipeSucceed()
 	{
-		//assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
+		assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
 	}
 	/**
 	 * Checks to see if recipe was added successfully added as reported by addRecipe method
