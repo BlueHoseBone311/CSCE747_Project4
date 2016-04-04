@@ -13,6 +13,7 @@ public class RecipeBook_Test
 	private Recipe r2;
 	private Recipe r3;
 	private Recipe r4;
+	private Recipe r5;
 	RecipeBook recipeBook;
 
 	@Before
@@ -55,6 +56,15 @@ public class RecipeBook_Test
 		r4.setAmtSugar("1");
 		r4.setPrice("65");
 		
+		//Set up for r5
+		r5 = new Recipe();
+		r5.setName("Double Chocolate Hot Chocolate");
+		r5.setAmtChocolate("8");
+		r5.setAmtCoffee("0");
+		r5.setAmtMilk("1");
+		r5.setAmtSugar("1");
+		r5.setPrice("65");
+		
 				
 	}
 
@@ -83,6 +93,17 @@ public class RecipeBook_Test
 		recipeBook.addRecipe(r1);
 		//try to add the recipe again
 		assertEquals(false, recipeBook.addRecipe(r1));
+	}
+	
+	@Test
+	public void testAddRecipeFailsOverfill()
+	{
+		recipeBook.addRecipe(r1);
+		recipeBook.addRecipe(r2);
+		recipeBook.addRecipe(r3);
+		recipeBook.addRecipe(r4);
+		//asserts that we can't add a recipe in position 5 because it would overflow the recipebook
+		assertEquals(false, recipeBook.addRecipe(r5));	
 	}
 
 }
