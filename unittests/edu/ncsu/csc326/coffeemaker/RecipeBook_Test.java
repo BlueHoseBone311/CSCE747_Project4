@@ -199,6 +199,9 @@ public class RecipeBook_Test
 		String deleted = recipeBook.deleteRecipe(0);
 		assertEquals("Coffee",deleted);
 	}
+	/**
+	 * Attempts to successfully add a recipe
+	 */
 	@Test
 	public void testEditRecipeSuccess()
 	{
