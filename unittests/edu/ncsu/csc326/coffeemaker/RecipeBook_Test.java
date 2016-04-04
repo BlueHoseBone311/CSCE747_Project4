@@ -2,6 +2,8 @@ package edu.ncsu.csc326.coffeemaker;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -74,17 +76,17 @@ public class RecipeBook_Test
 		recipeBook = null;
 	}
 
-	@Test
+	@Test 
 	public void testGetRecipeSucceed()
 	{
 		//recipeBook = new RecipeBook();
-		assertEquals(4, recipeBook.getRecipes().length);
+		assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
 	}
 	@Test
 	public void testAddRecipeSucceeds()
 	{
 		//recipeBook = new RecipeBook();
-		assertEquals(true, recipeBook.addRecipe(r2));
+		assertTrue(recipeBook.addRecipe(r2));
 	}
 	@Test
 	public void testAddRecipeFails()
@@ -92,7 +94,7 @@ public class RecipeBook_Test
 		//recipeBook = new RecipeBook();
 		recipeBook.addRecipe(r1);
 		//try to add the recipe again
-		assertEquals(false, recipeBook.addRecipe(r1));
+		assertFalse(recipeBook.addRecipe(r1));
 	}
 	
 	@Test
@@ -103,7 +105,7 @@ public class RecipeBook_Test
 		recipeBook.addRecipe(r3);
 		recipeBook.addRecipe(r4);
 		//asserts that we can't add a recipe in position 5 because it would overflow the recipebook
-		assertEquals(false, recipeBook.addRecipe(r5));	
+		assertTrue(recipeBook.addRecipe(r5));	
 	}
 
 }
