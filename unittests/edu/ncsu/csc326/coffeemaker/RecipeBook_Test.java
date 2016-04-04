@@ -106,6 +106,18 @@ public class RecipeBook_Test
 		assertEquals(75,recipeBook.getRecipes()[0].getPrice());
 	}
 	/**
+	 * Checks that a recipe cannot be added if it is null or is created with the 
+	 * default constructor
+	 */
+	@Test
+	public void testAddRecipeFail()
+	{
+		Recipe recipe = null;
+		assertFalse(recipeBook.addRecipe(recipe));
+		recipe = new Recipe();
+		assertFalse(recipeBook.addRecipe(recipe));
+	}
+	/**
 	 * Tests whether addRecipe allows adding the same instance of the same recipe twice
 	 */
 	@Test
