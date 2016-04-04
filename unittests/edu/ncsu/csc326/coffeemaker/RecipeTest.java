@@ -363,4 +363,27 @@ public class RecipeTest {
 
     }
 
+    @Test
+    public void hashCodeTest(){
+        //Test for empty string inputs
+        R1.setName("");
+        long val1 = R1.hashCode();
+        long val2 = 31 + R1.getName().hashCode();
+        assertEquals(val2,val1);
+
+        //Test for null input.
+        R1.setName(null);
+        long val3 = R1.hashCode();
+        long val4 = 31;
+        assertEquals(val4,val3);
+
+        //Test for valid string inputs
+        R1.setName("Rand0m@1");
+        long val5 = R1.hashCode();
+        long val6 = 31 + R1.getName().hashCode();
+        assertEquals(val6,val5);
+
+
+    }
+
 }
