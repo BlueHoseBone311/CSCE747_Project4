@@ -41,7 +41,7 @@ public class InventoryTest {
 
     @After
     public void tearDown() throws Exception {
-        //super.tearDown();
+        I1 = null;
     }
 
     @Test //Test Method for Chocolate Inventory Correction
