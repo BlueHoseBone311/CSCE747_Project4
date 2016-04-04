@@ -145,7 +145,7 @@ public class RecipeBook_Test
 	 * Tests if the added recipe has the same name as the recipe to be added
 	 */
 	@Test
-	public void testAddRecipeFails3 ()
+	public void testAddRecipeFailsNameChange ()
 	{
 		recipeBook.addRecipe(r1);
 		recipeBook.addRecipe(r2);
@@ -171,11 +171,34 @@ public class RecipeBook_Test
 	 * Tests that the position for deleting a recipe is set to null following delete
 	 */
 	@Test
-	public void testDeleteRecipe()
+	public void testDeleteRecipeSetToNull()
 	{
 		recipeBook.addRecipe(r1);
 		recipeBook.deleteRecipe(0);
 		assertTrue(recipeBook.getRecipes()[0].getName().equals(null));
 	}
+	/**
+	 * Attempts to successfully delete a recipe
+	 */
+	@Test
+	public void testDeleteRecipeSuccess()
+	{
+		recipeBook.addRecipe(r1);
+		String deleted = recipeBook.deleteRecipe(0);
+		assertEquals("Coffee",deleted);
+	}
+	@Test
+	public void testEditRecipeSuccess()
+	{
+		recipeBook.addRecipe(r1);
+		assertEquals("Mocha",recipeBook.editRecipe(0, r2));
+		assertEquals("Mocha", recipeBook.getRecipes()[0].getName());
+		assertEquals(20,recipeBook.getRecipes()[0].getAmtChocolate());
+		assertEquals(3,recipeBook.getRecipes()[0].getAmtCoffee());
+		assertEquals(1,recipeBook.getRecipes()[0].getAmtMilk());
+		assertEquals(1,recipeBook.getRecipes()[0].getAmtSugar());
+		assertEquals(75,recipeBook.getRecipes()[0].getPrice());
+	}
+	
 
 }
