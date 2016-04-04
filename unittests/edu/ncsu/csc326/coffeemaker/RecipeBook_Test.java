@@ -16,6 +16,7 @@ public class RecipeBook_Test
 	private Recipe r3;
 	private Recipe r4;
 	private Recipe r5;
+	private Recipe r1_2; //Same as r1 but different instance
 	RecipeBook recipeBook;
 
 	@Before
@@ -66,7 +67,14 @@ public class RecipeBook_Test
 		r5.setAmtMilk("1");
 		r5.setAmtSugar("1");
 		r5.setPrice("65");
-		
+		//Set up r1_2  
+		r1_2 = new Recipe();
+		r1_2.setName("OtherCoffee");
+		r1_2.setAmtChocolate("0");
+		r1_2.setAmtCoffee("3");
+		r1_2.setAmtMilk("1");
+		r1_2.setAmtSugar("1");
+		r1_2.setPrice("50");
 				
 	}
 
@@ -79,24 +87,76 @@ public class RecipeBook_Test
 	@Test 
 	public void testGetRecipeSucceed()
 	{
-		//recipeBook = new RecipeBook();
-		assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
+		//assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
 	}
+	/**
+	 * Checks to see if recipe was added successfully added as reported by addRecipe method
+	 * as well as that the values were untampered with in the adding process 
+	 */
 	@Test
 	public void testAddRecipeSucceeds()
 	{
 		//recipeBook = new RecipeBook();
 		assertTrue(recipeBook.addRecipe(r2));
+		assertEquals("Mocha", recipeBook.getRecipes()[0].getName());
+		assertEquals(20,recipeBook.getRecipes()[0].getAmtChocolate());
+		assertEquals(3,recipeBook.getRecipes()[0].getAmtCoffee());
+		assertEquals(1,recipeBook.getRecipes()[0].getAmtMilk());
+		assertEquals(1,recipeBook.getRecipes()[0].getAmtSugar());
+		assertEquals(75,recipeBook.getRecipes()[0].getPrice());
 	}
+	/**
+	 * Tests whether addRecipe allows adding the same instance of the same recipe twice
+	 */
 	@Test
-	public void testAddRecipeFails()
+	public void testAddRecipeFailsSameInstance()
 	{
 		//recipeBook = new RecipeBook();
 		recipeBook.addRecipe(r1);
 		//try to add the recipe again
 		assertFalse(recipeBook.addRecipe(r1));
 	}
+	/**
+	 * Tests whether adding a recipe with ingredients that are semantically equivalent 
+	 * but is of a different instance and different name
+	 */
+	@Test
+	public void testAddRecipeFailsDifferentInstance()
+	{
+		recipeBook.addRecipe(r1);
+		//Same ingredients as r1 but different instance and name. Should not be allowed
+		assertFalse(recipeBook.addRecipe(r1_2));
+	}
 	
+	/**
+	 * Tests whether a recipe is added in the first available location after delete
+	 */
+	@Test
+	public void testAddRecipeFailsAfterDelete()
+	{
+		recipeBook.addRecipe(r1);
+		recipeBook.addRecipe(r2);
+		recipeBook.addRecipe(r3);
+		recipeBook.deleteRecipe(0);
+		recipeBook.addRecipe(r4);
+		assertTrue(r4.equals(recipeBook.getRecipes()[0]));
+	}
+	/**
+	 * Tests if the added recipe has the same name as the recipe to be added
+	 */
+	@Test
+	public void testAddRecipeFails3 ()
+	{
+		recipeBook.addRecipe(r1);
+		recipeBook.addRecipe(r2);
+		String A = r3.getName();
+		recipeBook.editRecipe(0, r3);
+		String B = recipeBook.getRecipes()[0].getName();
+		assertEquals(A, B);
+	}
+	/**
+	 * Tests if the data structure holding the recipes dynamically resizes
+	 */
 	@Test
 	public void testAddRecipeFailsOverfill()
 	{
@@ -106,6 +166,16 @@ public class RecipeBook_Test
 		recipeBook.addRecipe(r4);
 		//asserts that we can't add a recipe in position 5 because it would overflow the recipebook
 		assertTrue(recipeBook.addRecipe(r5));	
+	}
+	/**
+	 * Tests that the position for deleting a recipe is set to null following delete
+	 */
+	@Test
+	public void testDeleteRecipe()
+	{
+		recipeBook.addRecipe(r1);
+		recipeBook.deleteRecipe(0);
+		assertTrue(recipeBook.getRecipes()[0].getName().equals(null));
 	}
 
 }
