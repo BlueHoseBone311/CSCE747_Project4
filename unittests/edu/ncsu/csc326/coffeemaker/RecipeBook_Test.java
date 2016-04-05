@@ -84,10 +84,13 @@ public class RecipeBook_Test
 		recipeBook = null;
 	}
 
+	/**
+	 * Tests that the returned object is an array of Recipes
+	 */
 	@Test 
 	public void testGetRecipeSucceed()
 	{
-		assertTrue(recipeBook.getRecipes() instanceof ArrayList<?>);
+		assertTrue(recipeBook.getRecipes() instanceof Recipe []);
 	}
 	/**
 	 * Checks to see if recipe was added successfully added as reported by addRecipe method
@@ -213,6 +216,26 @@ public class RecipeBook_Test
 		assertEquals(1,recipeBook.getRecipes()[0].getAmtMilk());
 		assertEquals(1,recipeBook.getRecipes()[0].getAmtSugar());
 		assertEquals(75,recipeBook.getRecipes()[0].getPrice());
+	}
+	
+	/**
+	 * Attempts to delete a recipe that does not exist
+	 */
+	@Test
+	public void testDeleteRecipeDNE()
+	{
+		recipeBook.addRecipe(r1);
+		assertEquals(null, recipeBook.deleteRecipe(1));
+	}
+	
+	/**
+	 * Attempts to edit a recipe that does not exist
+	 */
+	@Test 
+	public void testEditRecipeDNE ()
+	{
+		recipeBook.addRecipe(r1);
+		assertEquals(null,recipeBook.editRecipe(1, r2) );
 	}
 	
 
