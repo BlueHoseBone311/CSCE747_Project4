@@ -2,6 +2,7 @@ package edu.ncsu.csc326.coffeemaker;
 
 import edu.ncsu.csc326.coffeemaker.exceptions.InventoryException;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -58,7 +59,7 @@ public class CoffeeMakerTest extends TestCase {
 
 		super.setUp();
 	}
-
+/*
 	public void testAddInventory() {
 		try {
 			cm.addInventory("4", "7", "0", "9");
@@ -79,6 +80,32 @@ public class CoffeeMakerTest extends TestCase {
 	public void testMakeCoffee() {
 		cm.addRecipe(r1);
 		assertEquals(25, cm.makeCoffee(0, 75));
+	}
+*/
+
+	//Additional Tests Added 
+	@Test
+	public void addInventoryTest(){
+		Inventory I1 = new Inventory();
+
+		try{
+			cm.addInventory("5","5","5","5");
+			assertEquals(20,I1.getChocolate());
+			assertEquals(20,I1.getCoffee());
+			assertEquals(20,I1.getSugar());
+			assertEquals(20,I1.getMilk());
+		}
+		catch(InventoryException e){
+			fail("Every Input Value is a positive integer.");
+		}
+	}
+
+	@Test
+	public void checkInventoryTest(){
+		System.out.println("Enter check Inv test");
+		Inventory I1 = new Inventory();
+		String result = cm.checkInventory();
+		assertEquals(I1.toString(),result);
 	}
 }
 

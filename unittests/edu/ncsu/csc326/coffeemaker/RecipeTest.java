@@ -383,7 +383,6 @@ public class RecipeTest {
         long val6 = 31 + R1.getName().hashCode();
         assertEquals(val6,val5);
 
-
     }
 
 }
