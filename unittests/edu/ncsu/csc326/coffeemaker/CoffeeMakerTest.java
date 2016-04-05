@@ -12,7 +12,6 @@ public class CoffeeMakerTest
 	private Recipe r1;
 	private Recipe r2;
 	private Recipe r3;
-	private Recipe r4;
 
 	@Before
 	public void setUp() throws Exception
