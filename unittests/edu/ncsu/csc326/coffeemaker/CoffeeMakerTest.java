@@ -66,7 +66,7 @@ public class CoffeeMakerTest
 		catch (InventoryException e)
 		{
 			fail("InventoryException should not be thrown");
-    	}
+    		}
 
  		inv = cm.checkInventory();
 		System.out.println("Final Inventory");
