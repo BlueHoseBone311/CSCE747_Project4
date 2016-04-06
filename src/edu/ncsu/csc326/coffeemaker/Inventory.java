@@ -39,8 +39,13 @@ public class Inventory {
      * to the specified amount.
      * @param chocolate
      */
+	/**
+	 * Original code- if(chocolate >= 0)
+	 * Mutant -  if(chocolate >0)
+	 * setChocolateTest assertion has failed as expected.
+	 */
     public synchronized void setChocolate(int chocolate) {
-    	if(chocolate > 0) { //Introduced a mutant inside the if condition (if chocolate >0) and the  setChocolateTest assertion has failed as expected.
+    	if(chocolate >= 0) {
     		Inventory.chocolate = chocolate;
     	}
         
@@ -92,6 +97,11 @@ public class Inventory {
      * @param coffee
      * @throws InventoryException
      */
+	/**
+	 * original code - if (amtCoffee >= 0)
+	 * Mutation code 1: if(amtCoffee != 0)
+	 * Mutation code 2: if(amtCoffee > 0)
+	 */
     public synchronized void addCoffee(String coffee) throws InventoryException {
     	int amtCoffee = 0;
     	try {
@@ -131,6 +141,10 @@ public class Inventory {
      * to the current amount of milk units.
      * @param milk
      * @throws InventoryException
+     */
+	/**
+	 * Original code - Inventory.milk += amtMilk
+	 * Mutant Code - Inventory.milk -= amtMilk
      */
     public synchronized void addMilk(String milk) throws InventoryException {
     	int amtMilk = 0;
@@ -179,7 +193,7 @@ public class Inventory {
     	} catch (NumberFormatException e) {
     		throw new InventoryException("Units of sugar must be a positive integer");
     	}
-		if (amtSugar <= 0) {
+		if (amtSugar >= 0) { //Original code: if (amtSugar <= 0) is now corrected here.
 			Inventory.sugar += amtSugar;
 		} else {
 			throw new InventoryException("Units of sugar must be a positive integer");
@@ -217,7 +231,7 @@ public class Inventory {
      */
     public synchronized boolean useIngredients(Recipe r) {
     	if (enoughIngredients(r)) {
-	    	Inventory.coffee += r.getAmtCoffee();
+	    	Inventory.coffee -= r.getAmtCoffee();  //Original Code: Inventory.coffee += r.getAmtCoffee() is now corrected here.
 	    	Inventory.milk -= r.getAmtMilk();
 	    	Inventory.sugar -= r.getAmtSugar();
 	    	Inventory.chocolate -= r.getAmtChocolate();

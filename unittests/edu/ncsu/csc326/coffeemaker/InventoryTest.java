@@ -515,10 +515,10 @@ public class InventoryTest {
             R3.setAmtSugar("400");
             sSug1 = R3.getAmtSugar();
 
-            boolean check01 = I10.enoughIngredients(R2);
+            boolean check01 = I10.enoughIngredients(R3);
             assertFalse(check01);
 
-            boolean check02 = I10.useIngredients(R2);
+            boolean check02 = I10.useIngredients(R3);
             assertFalse(check02);
 
             //Expected ZERO reduction in inventory levels as the recipe requires exorbitant levels of ingredients beyond the available inventory.
