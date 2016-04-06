@@ -169,19 +169,7 @@ public class RecipeBook_Test
 		String B = recipeBook.getRecipes()[0].getName();
 		assertEquals(A, B);
 	}
-	/**
-	 * Tests if the data structure holding the recipes dynamically resizes
-	 */
-	@Test
-	public void testAddRecipeFailsOverfill()
-	{
-		recipeBook.addRecipe(r1);
-		recipeBook.addRecipe(r2);
-		recipeBook.addRecipe(r3);
-		recipeBook.addRecipe(r4);
-		//asserts that we can't add a recipe in position 5 because it would overflow the recipebook
-		assertTrue(recipeBook.addRecipe(r5));	
-	}
+	
 	/**
 	 * Tests that the position for deleting a recipe is set to null following delete
 	 */

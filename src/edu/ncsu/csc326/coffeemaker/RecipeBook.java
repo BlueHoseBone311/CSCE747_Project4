@@ -29,7 +29,7 @@ public class RecipeBook {
 		boolean exists = false;
 		//Check that recipe doesn't already exist in array
 		for (int i = 0; i < recipeArray.length; i++ ) {
-			if (r.equals(recipeArray[i])) {
+			if (recipeArray[i] != null && r.equals(recipeArray[i])) {
 				exists = true;
 			}
 		}
@@ -39,7 +39,7 @@ public class RecipeBook {
 		//Check for first empty spot in array
 		if (!exists) {
 			for (int i = 0; i < recipeArray.length && !added; i++) {
-				if (recipeArray[i] == null) {
+				if (recipeArray[i] == null ) {
 					recipeArray[i] = r;
 					added = true;
 				}
@@ -57,7 +57,8 @@ public class RecipeBook {
 	public synchronized String deleteRecipe(int recipeToDelete) {
 		if (recipeArray[recipeToDelete] != null) {
 			String recipeName = recipeArray[recipeToDelete].getName();
-			recipeArray[recipeToDelete] = new Recipe();
+			//recipeArray[recipeToDelete] = new Recipe();
+			recipeArray[recipeToDelete] = null;
 			return recipeName;
 		} else {
 			return null;
@@ -74,7 +75,7 @@ public class RecipeBook {
 	public synchronized String editRecipe(int recipeToEdit, Recipe newRecipe) {
 		if (recipeArray[recipeToEdit] != null) {
 			String recipeName = recipeArray[recipeToEdit].getName();
-			newRecipe.setName("");
+			//newRecipe.setName("");
 			recipeArray[recipeToEdit] = newRecipe;
 			return recipeName;
 		} else {
