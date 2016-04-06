@@ -108,7 +108,7 @@ public class InventoryTest {
 
 
     @Test //Test Method for Coffee Inventory Correction
-    public void setCofeeTest(){
+    public void setCoffeeTest(){
 
         System.out.println("Test 3 Started");
 
