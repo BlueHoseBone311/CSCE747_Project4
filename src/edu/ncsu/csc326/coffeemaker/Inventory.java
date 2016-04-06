@@ -40,7 +40,7 @@ public class Inventory {
      * @param chocolate
      */
     public synchronized void setChocolate(int chocolate) {
-    	if(chocolate >= 0) {
+    	if(chocolate > 0) { //Introduced a mutant inside the if condition (if chocolate >0) and the  setChocolateTest assertion has failed as expected.
     		Inventory.chocolate = chocolate;
     	}
         
