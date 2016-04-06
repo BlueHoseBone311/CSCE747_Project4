@@ -44,7 +44,10 @@ public class InventoryTest {
         I1 = null;
     }
 
-    @Test //Test Method for Chocolate Inventory Correction
+    /**
+     * Tests behaviour of the Method for Chocolate Inventory Correction
+     */
+    @Test
     public void setChocolateTest(){
 
         System.out.println("Test 1 Started");
@@ -69,7 +72,11 @@ public class InventoryTest {
         System.out.println("Test 1 Completed");
     }
 
-    @Test //Test Method for Chocolate Inventory Accumulation
+    /**
+     * Test Method for Chocolate Inventory Accumulation
+     * @throws InventoryException
+     */
+    @Test
     public synchronized void addChocolateTest() throws InventoryException{
 
         System.out.println("Test 2 Started");
@@ -107,8 +114,11 @@ public class InventoryTest {
     }
 
 
-    @Test //Test Method for Coffee Inventory Correction
-    public void setCoffeeTest(){
+    /**
+     * Test Method for Coffee Inventory Correction
+     */
+    @Test
+    public void setCofeeTest(){
 
         System.out.println("Test 3 Started");
 
@@ -132,7 +142,11 @@ public class InventoryTest {
         System.out.println("Test 3 Completed");
     }
 
-    @Test //Test Method for Coffee Inventory Accumulation
+    /**
+     * Test Method for Coffee Inventory Accumulation
+     * @throws InventoryException
+     */
+    @Test
     public synchronized void addCoffeeTest() throws InventoryException{
 
         System.out.println("Test 4 Started");
@@ -169,7 +183,10 @@ public class InventoryTest {
 
     }
 
-    @Test //Test Method for Milk Inventory Correction
+    /**
+     * Test Method for Milk Inventory Correction
+     */
+    @Test
     public void setMilkTest(){
 
         System.out.println("Test 5 Started");
@@ -194,7 +211,11 @@ public class InventoryTest {
         System.out.println("Test 5 Completed");
     }
 
-    @Test //Test Method for Milk Inventory Accumulation
+    /**
+     * Test Method for Milk Inventory Accumulation
+     * @throws InventoryException
+     */
+    @Test
     public synchronized void addMilkTest() throws InventoryException{
 
         System.out.println("Test 6 Started");
@@ -231,8 +252,10 @@ public class InventoryTest {
 
     }
 
-
-    @Test //Test Method for Sugar Inventory Correction
+    /**
+     * Test Method for Sugar Inventory Correction
+     */
+    @Test
     public void setSugarTest(){
 
         System.out.println("Test 7 Started");
@@ -257,7 +280,11 @@ public class InventoryTest {
         System.out.println("Test 7 Completed");
     }
 
-    @Test //Test Method for Sugar Inventory Accumulation
+    /**
+     * Test Method for Sugar Inventory Accumulation
+     * @throws InventoryException
+     */
+    @Test
     public synchronized void addSugarTest() throws InventoryException{
 
         System.out.println("Test 8 Started");
@@ -294,7 +321,10 @@ public class InventoryTest {
 
     }
 
-    @Test //Test Method for verifying Inventory against recipe requirements
+    /**
+     * Test Method for verifying Inventory against recipe requirements
+     */
+    @Test
     public synchronized void enoughIngredientsTest(){
 
         System.out.println("Test 9 Started");
@@ -402,7 +432,10 @@ public class InventoryTest {
 
     }
 
-    @Test //Test Method for verifying Inventory against recipe requirements based on their use.
+    /**
+     * Test Method for verifying Inventory against recipe requirements based on their use.
+     */
+    @Test
     public synchronized void useIngredientsTest(){
 
         System.out.println("Test 10 Started");
@@ -507,6 +540,9 @@ public class InventoryTest {
 
     }
 
+    /**
+     * Tests the behaviour of the overridden toString method for Inventory.java
+     */
     @Test
     public void toStringTest(){
         System.out.println("Test 11 Started");

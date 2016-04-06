@@ -16,6 +16,7 @@ public class RecipeTest {
     @Before
     public void setUp(){
         R1 = new Recipe();
+        System.out.println("Setup of Test Harness Completed successfully");
 
     }
 
@@ -24,9 +25,12 @@ public class RecipeTest {
         R1 = null;
     }
 
-    @Test //Test Chocolate quantity spec method for a Recipe
+    /**
+     * Tests behaviour of the Test Chocolate quantity spec method for a Recipe
+     */
+    @Test
     public void setAmtChocolateTest(){
-
+        System.out.println("Test 1 Started");
         try{  //Test for null input values
             R1.setName("R1");
             R1.setAmtChocolate("");
@@ -83,11 +87,15 @@ public class RecipeTest {
         catch(RecipeException e){
             assertTrue("Units of chocolate must be a positive integer",R1.getAmtChocolate()<=0);
         }
+        System.out.println("Test 1 Completed");
     }
 
-    @Test //Test Coffee quantity spec method for a Recipe
+    /**
+     * Tests behaviour of the Coffee quantity spec method for a Recipe
+     */
+    @Test
     public void setAmtCoffeeTest(){
-
+        System.out.println("Test 2 Started");
         try{  //Test for null input values
             R1.setName("R1");
             R1.setAmtCoffee("");
@@ -144,11 +152,15 @@ public class RecipeTest {
         catch(RecipeException e){
             assertTrue("Units of chocolate must be a positive integer",R1.getAmtCoffee()<=0);
         }
+        System.out.println("Test 2 Completed");
     }
 
-    @Test //Test Sugar quantity spec method for a Recipe
+    /**
+     * Tests behaviour of the Sugar quantity spec method for a Recipe
+     */
+    @Test
     public void setAmtSugarTest(){
-
+        System.out.println("Test 3 Started");
         try{  //Test for null input values
             R1.setName("R1");
             R1.setAmtSugar("");
@@ -205,11 +217,15 @@ public class RecipeTest {
         catch(RecipeException e){
             assertTrue("Units of chocolate must be a positive integer",R1.getAmtSugar()<=0);
         }
+        System.out.println("Test 3 Completed");
     }
 
-    @Test //Test Milk quantity spec method for a Recipe
+    /**
+     * Tests behaviour of the Milk quantity spec method for a Recipe
+     */
+    @Test
     public void setAmtMilkTest(){
-
+        System.out.println("Test 4 Started");
         try{  //Test for null input values
             R1.setName("R1");
             R1.setAmtMilk("");
@@ -266,11 +282,17 @@ public class RecipeTest {
         catch(RecipeException e){
             assertTrue("Units of chocolate must be a positive integer",R1.getAmtMilk()<=0);
         }
+        System.out.println("Test 4 Completed");
     }
 
-    @Test //Test Price value spec method for a Recipe
-    public void setPriceTest() throws RecipeException{
+    /**
+     * Tests behaviour of the Price specification method for a Recipe
+     * @throws RecipeException
+     */
 
+    @Test
+    public void setPriceTest() throws RecipeException{
+        System.out.println("Test 5 Started");
         try{  //Test for null input values
             R1.setName("R1");
             R1.setPrice("");
@@ -327,10 +349,15 @@ public class RecipeTest {
         catch(RecipeException e){
             assertTrue("Units of chocolate must be a positive integer",R1.getPrice()<=0);
         }
+        System.out.println("Test 5 Completed");
     }
 
+    /**
+     * Tests behaviour of the Name specification method for a Recipe
+     */
     @Test
     public void setNameTest(){
+        System.out.println("Test 6 Started");
         //Test for Empty String Inputs
         R1.setName("");
         assertNotNull(R1.getName());
@@ -345,10 +372,15 @@ public class RecipeTest {
         R1.setName("Regular@1*");
         assertNotNull(R1.getName());
         assertEquals("Regular@1*",R1.getName());
+        System.out.println("Test 6 Completed");
     }
 
+    /**
+     * Tests behaviour of the overridden toString method.
+     */
     @Test
     public void toStringTest(){
+        System.out.println("Test 7 Started");
         //Test for valid string input
         R1.setName("Regular000@1*");
         assertEquals("Regular000@1*",R1.toString());
@@ -360,11 +392,15 @@ public class RecipeTest {
         //Test for null input values
         R1.setName(null);
         assertEquals("",R1.getName());
-
+        System.out.println("Test 8 Completed");
     }
 
+    /**
+     * Tests behaviour of the overridden hashCode method.
+     */
     @Test
     public void hashCodeTest(){
+        System.out.println("Test 9 Started");
         //Test for empty string inputs
         R1.setName("");
         long val1 = R1.hashCode();
@@ -382,7 +418,34 @@ public class RecipeTest {
         long val5 = R1.hashCode();
         long val6 = 31 + R1.getName().hashCode();
         assertEquals(val6,val5);
+        System.out.println("Test 9 Completed");
+    }
 
+    /**
+     * Tests behaviour of the overridden equals method.
+     */
+    @Test
+    public void equalsTest(){
+        System.out.println("Test 10 Started");
+        //Compare different objects of the same kind
+        Recipe R1 = new Recipe();
+        Recipe R2 = new Recipe();
+        assertTrue(R1.equals(R2)); //Since both will  be instances will have the same name.
+
+        R1.setName("B1");
+        assertFalse(R1.equals(R2)); //Now one of the objects has a default constructor specified name.
+
+        try{
+            R2.setName(null); //check for when one object name is null while the other is a valid string.
+            R2.setPrice("3");
+            assertFalse(R1.equals(R2));
+        }
+        catch(RecipeException e){
+            assertTrue("Input for price needs to be a positive integer",R2.getPrice()<0);
+            assertNull(R2.getName());
+        }
+
+        System.out.println("Test 10 Completed");
     }
 
 }
